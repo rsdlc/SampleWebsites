@@ -1,0 +1,17 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  /*border: 1px dotted black;*/
+}
+th {
+  text-align: left;
+}
+
+label {
+  margin-left: 5px;
+}
+
+#survey_panel {
+  border: transparent !important;
+}

@@ -1,0 +1,102 @@
+<!-- Nav bar start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Monkey</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/surveys/all">Surveys</a></li>
+      
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%= @user.name %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/surveys/all">Surveys</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href='/user/logout'>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nav bar end-->
+<!-- Contenido -->  
+<div class="container text-center">
+  <div class="row">
+  <!-- Center start -->
+    <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body" id='survey_panel'>
+
+            <!-- Se carga la figura desde Jquery -->
+            </div>
+          </div>
+
+<div id="authoredsurveys">
+  <h2>Authored Surveys</h2>
+  <table class="table text-left">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Times Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @user.authored_surveys %>
+       <% @user.authored_surveys.each_with_index do |survey,index|  %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= survey.title %></td>
+          <td><%= survey.participations.count %></td>
+        </tr>
+       <% end  %>
+      <% end  %>
+    </tbody>
+  </table>
+</div>
+<div id="takensurveys">
+<br><br><h2>Taken Surveys</h2>
+  <table class="table text-left">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>      
+      </tr>
+    </thead>
+    <tbody>
+      <% if @user.taken_surveys %>
+       <% @user.taken_surveys.each_with_index do |survey,index|  %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></td>
+        </tr>
+       <% end  %>
+      <% end  %>
+    </tbody>
+  </table>
+</div>
+          
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container text-left"> 
+  <div class="jumbotron">
+    <h1>ChangoEncuesta</h1>
+    <p>Registrate o inicia sesión</p>
+  </div>
+  <div align='center'>
+    <button id="registerbutton" type="button" class="btn btn-primary">Registrate</button>
+    <button id="loginbutton" type="button" class="btn btn-info">Inicia sesion</button>
+  </div>
+  <form id='registerform' class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Nombre:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name='name' placeholder="nombre, ej: Maximiliano" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" name='email' placeholder="email, ej: max@mail.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Contraseña:</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="pwd" name='password' placeholder="Contraseña, ej: Abc_123" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button id='confirmregbutton' type="button" class="btn btn-success">Aceptar</button>
+            </div>
+          </div>
+  </form>
+  <form id='loginform' class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" name='email' placeholder="email, ej: max@mail.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Contraseña:</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="pwd" name='password' placeholder="Contraseña, ej: Abc_123" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button id='confirmloginbutton' type="button" class="btn btn-success">Aceptar</button>
+            </div>
+          </div>
+  </form>
+</div>
