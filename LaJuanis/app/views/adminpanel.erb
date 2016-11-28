@@ -1,0 +1,97 @@
+<button type="button" class="btn btn-success col-md-6" id="pedidosbtn">Pedidos</button>
+<button type="button" class="btn btn-info col-md-6" id="usuariosbtn">Usuarios</button>
+
+<div class="container" id="tablaspedidos">
+  <h2>Ordenes Pendientes</h2>           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Fecha de Entrega</th>
+        <th>Pedido</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @pendingorders %>
+        <% @pendingorders.each do |order|  %>
+          <tr class="info">
+            <td><%= order.name %></td>     
+            <td><%= order.email %></td>
+            <td><%= order.telephone %></td>
+            <td><%= order.date %></td>
+            <td>
+              <% order.cakes.each do |cake| %> 
+              Sabor: <%= cake.flavor %>, Tamaño: <%= cake.size %>, Instrucciones: <%= cake.instructions %>
+              <% end  %>
+            </td>
+            <td>
+              <a href="/order/finalizar/<%= order.id %>"><i class="fa fa-check fa-2x" aria-hidden="true" id="finishorder"></i></a>
+              <a href="/order/eliminar/<%= order.id %>"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+        <% end  %>
+      <% end  %>
+    </tbody>
+  </table>
+ <h2>Ordenes Finalizadas</h2>           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Fecha de Entrega</th>
+        <th>Pedido</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @completedorders %>
+        <% @completedorders.each do |order|  %>
+          <tr class="success">
+            <td><%= order.name %></td>     
+            <td><%= order.email %></td>
+            <td><%= order.telephone %></td>
+            <td><%= order.date %> </td>
+            <td>
+              <% order.cakes.each do |cake| %> 
+              Sabor: <%= cake.flavor %>, Tamaño: <%= cake.size %>, Instrucciones: <%= cake.instructions %>
+              <% end  %>
+            </td>
+            <td>
+              <a href="/order/eliminar/<%= order.id %>"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+        <% end  %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="container" id="tablausuarios">
+  <h2>Clientes</h2>           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Promociones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @users %>
+        <% @users.each do |user|  %>
+          <tr class="warning">
+            <td><%= user.name %></td>     
+            <td><%= user.email %></td>
+            <td><%= user.telephone %></td>
+            <td><%= user.promotions %></td>
+          </tr>
+        <% end  %>
+      <% end  %>
+    </tbody>
+  </table>

@@ -1,0 +1,51 @@
+<!-- ==============================BARRA DE NAVEGACION===================== -->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="barranav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">La Juanis</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/galeria">Galeria</a></li>
+      <li><a href="/pedidos">Pedidos</a></li>
+      <li id="activelink"><a href="/historia">Contactanos</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- ======================================================================= -->
+
+<div id="maintext">
+  <div class="col-md-6">
+    <h4>
+      <span class="glyphicon glyphicon-time"></span> Lunes a Domingo: 10:00 A.M - 8:00 P.M<br><br>
+      <span class="glyphicon glyphicon-road"></span> Calle La Otra Banda y Canoa, 01090 Mexico City, Mexico.<br><br>
+      <i class="fa fa-facebook-official" aria-hidden="true"><a target="_blank" href="https://www.facebook.com/Pasteleria-La-Juanis-946226298799450">Pasteleria La Juanis</a></i><br><br>
+    </h4>
+  </div>
+  <div class="col-md-6">
+    <h4>
+      <span class="glyphicon glyphicon-envelope"></span> pastelerialajuanis@gmail.com<br><br><br>
+      <span class="glyphicon glyphicon-earphone"></span> 55 50 78 52<br><br><br>
+      <i class="fa fa-instagram" aria-hidden="true">Pasteleria La Juanis</i>
+    </h4>
+  </div>
+</div>
+<div class="col-md-12" align="center">
+  <!-- ==============================GOOGLE MAPS PLUGIN==================== -->
+<div id="map"></div></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 19.337306, lng: -99.196722};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6YvvNy4KJMHfgqXdC9iSzQPGYztr8Y14&callback=initMap">
+    </script>

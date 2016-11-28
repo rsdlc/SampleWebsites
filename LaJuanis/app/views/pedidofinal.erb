@@ -1,0 +1,13 @@
+<h1>Tu orden ha sido procesada!</h1>
+<h3>Informacion:</h3>
+<p>
+  <b>Nombre:</b> <%= @order.name.capitalize  %><br>
+  <b>Email:</b> <%= @order.email %><br>
+  <b>Telefono:</b> <%= @order.telephone %><br>
+</p>
+<h4>Tu Pastel:</h4>
+<p>
+  <b>Sabor:</b> <%= @cake.flavor %><br>
+  <b>Tamaño:</b> <%= @cake.size.capitalize %><br>
+  <b>Instrucciones Especiales:</b> <%= @cake.instructions %><br>
+</p>
