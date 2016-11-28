@@ -1,0 +1,155 @@
+<!-- EMPIEZA LA NAV BAR
+======================================= -->
+<!-- Nav bar start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Kuora</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href='/categories'>Categories</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%= @user.user_name %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/questions/user">Questions</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href='/user/out'>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nav bar end-->
+ 
+<!-- TITULO EMPIEZA
+======================================= -->
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Choose your categories</h1>
+    <p>Personalize your experience</p>
+  </div>
+</div>
+
+<!-- TITULO ACABA
+======================================== -->
+
+<!-- CATEGORIAS EMPIEZAN
+======================================= -->
+<form action="/categories/choose" method="post" id="categoryform">
+  <div class="container-fluid bg-3 text-center">
+    <h3>Categories</h3><br>
+    <div class="row">
+      <div class="col-sm-3">
+        <p>History</p>
+        <input type='checkbox' name='category[]' value='1' id="cat1"/>
+        <label for="cat1"><img src="http://i.imgur.com/YIGCdbv.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Sports</p>
+        <input type='checkbox' name='category[]' value='2' id="cat2"/>
+        <label for="cat2"><img src="http://i.imgur.com/MfQLdde.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Food</p>
+        <input type='checkbox' name='category[]' value='3' id="cat3"/>
+        <label for="cat3"><img src="http://i.imgur.com/cEdtYgl.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Travel</p>
+        <input type='checkbox' name='category[]' value='4' id="cat4"/>
+        <label for="cat4"><img src="http://i.imgur.com/BQvUQZa.jpg"/>
+        </label>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <p>Science</p>
+        <input type='checkbox' name='category[]' value='5' id="cat5"/>
+        <label for="cat5"><img src="http://i.imgur.com/3BKuH1Y.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Films</p>
+        <input type='checkbox' name='category[]' value='6' id="cat6"/>
+        <label for="cat6"><img src="http://i.imgur.com/D0gp5yo.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Music</p>
+        <input type='checkbox' name='category[]' value='7' id="cat7"/>
+        <label for="cat7"><img src="http://i.imgur.com/7Ov9rKk.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Politics</p>
+        <input type='checkbox' name='category[]' value='8' id="cat8"/>
+        <label for="cat8"><img src="http://i.imgur.com/23PK6t5.jpg"/>
+        </label>
+      </div>
+    </div>
+  </div><br><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <p>Technology</p>
+        <input type='checkbox' name='category[]' value='9' id="cat9"/>
+        <label for="cat9"><img src="http://i.imgur.com/2CewL3i.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Nature</p>
+        <input type='checkbox' name='category[]' value='10' id="cat10"/>
+        <label for="cat10"><img src="http://i.imgur.com/Ct8ajc6.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Books</p>
+        <input type='checkbox' name='category[]' value='11' id="cat11"/>
+        <label for="cat11"><img src="http://i.imgur.com/FOCQt7q.jpg"/>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <p>Fashion</p>
+        <input type='checkbox' name='category[]' value='12' id="cat12"/>
+        <label for="cat12"><img src="http://i.imgur.com/qahH301.jpg"/>
+        </label>
+      </div>
+    </div>
+  </div><br><br>
+  <div align="center">
+    <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+    <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
+  </div>
+</form>
+<!-- CATEGORIAS ACABAN
+======================================= -->
+

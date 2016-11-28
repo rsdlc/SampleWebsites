@@ -1,0 +1,194 @@
+<!-- Nav bar start -->
+<!-- Nav bar start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Kuora</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href='/categories'>Categories</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%= @user.user_name %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/questions/user">Questions</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href='/user/out'>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nav bar end-->
+<!-- Nav bar end-->
+<!-- Contenido -->  
+<div class="container text-center">
+  <div class="row">
+    <!-- Left start -->
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="#"> <%= @user.user_name %> </a></p>
+        <img src="/img/<%= @user.img %>" class="img-circle" height="65" width="65" alt="Avatar">
+      </div>
+      <div class="well">
+        <p><a href="#">Interests</a></p>
+        <p id="cat_id">
+          <a href="/category/questions/1"><span class="label label-default">History</span></a>
+          <a href="/category/questions/2"><span class="label label-primary">Sports</span></a>
+          <a href="/category/questions/3"><span class="label label-success">Food</span></a>
+          <a href="/category/questions/4"><span class="label label-info">Travel</span></a>
+          <a href="/category/questions/5"><span class="label label-warning">Science</span></a>
+          <a href="/category/questions/6"><span class="label label-danger">Films</span></a>
+          <a href="/category/questions/7"><span class="label label-default">Music</span></a>
+          <a href="/category/questions/8"><span class="label label-primary">Politics</span></a>
+          <a href="/category/questions/9"><span class="label label-success">Technology</span></a>
+          <a href="/category/questions/10"><span class="label label-info">Nature</span></a>
+          <a href="/category/questions/11"><span class="label label-warning">Books</span></a>
+          <a href="/category/questions/12"><span class="label label-danger">Fashion</span></a>
+        </p>
+      </div>
+<!--       <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Ey!</strong></p>
+        People are looking at your profile. Find out who.
+      </div>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a hef="#">Link</a></p> -->
+    </div>
+    <!-- Left finish -->
+    <!-- Center start -->
+    <div class="col-sm-9">
+    <!-- Make question -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              
+                <textarea name="question" id="title_q" cols="80" rows="2" placeholder="What do yo want to now?"></textarea>
+                <button type="button" class="btn btn-default btn-sm" id='btn_make_q' data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-send"></span> Ask
+                </button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <% @user.categories.each do |cat| %>
+        <% cat.questions.reverse.each do |question| %>
+      <!-- Question start-->
+          <div class="row" id="folowers_q">
+            <!-- Question User  -->
+            <div class="col-sm-3">
+              <div class="well">
+               <p><%= question.user.name %> </p>
+               <img src="/img/<%= question.user.img %>" class="img-circle" height="55" width="55" alt="Avatar">
+              </div>
+            </div>
+            <!-- Question question -->
+            <div class="col-sm-9">
+              <div class="well">
+                <a href='/answers/<%= question.id %>'><h3><%= question.title %></h3></a>
+                <p><%= question.body %></p>
+                <a href="/question/like/<%= question.id %>">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                </button>
+                </a>
+                <p><%= question.likes %> </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <!-- Question end-->
+
+
+    </div>
+    <!-- Center finish -->
+    <!-- Right start -->
+    <!-- <div class="col-sm-2 well">
+      <div class="thumbnail">
+        <p>Upcoming Events:</p>
+        <img src="paris.jpg" alt="Paris" width="400" height="300">
+        <p><strong>Paris</strong></p>
+        <p>Fri. 27 November 2015</p>
+        <button class="btn btn-primary">Info</button>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div> -->
+    <!-- Right finish -->
+
+  </div>
+</div>
+<!-- Model -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <form name='make_question'id='frm_send_q'>
+        <div class="modal-header" id='modal_title_q'>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <input type="text" class="modal-title" name='title' placeholder='Title of the question' required> 
+        </div>
+        <div class="modal-body">
+          <textarea id="b_q"name="body" cols="50" rows="10" placeholder="Tell us more about your question..." required="required"></textarea>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Category<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <input type="radio" name="category" value="1" id="hist"> <label for="hist">History</label><br>
+              <input type="radio" name="category" value="2" id="sports"> <label for="sports">Sports</label><br>
+              <input type="radio" name="category" value="3" id="food"> <label for="food">Food</label><br>
+              <input type="radio" name="category" value="4" id="travel"> <label for="travel">Travel</label><br>
+              <input type="radio" name="category" value="5" id="science"> <label for="science">Science</label><br>
+              <input type="radio" name="category" value="6" id="films"> <label for="films">Films</label><br>
+              <input type="radio" name="category" value="7" id="music"> <label for="music">Music</label><br>
+              <input type="radio" name="category" value="8" id="politics"> <label for="politics">Politics</label><br>
+              <input type="radio" name="category" value="9" id="technology"> <label for="technology">Technology</label><br>
+              <input type="radio" name="category" value="10" id="nature"> <label for="nature">Nature</label><br>
+              <input type="radio" name="category" value="11" id="books"> <label for="books">Food</label><br>
+              <input type="radio" name="category" value="12" id="fashion"> <label for="fashion">Fashion</label><br>
+            </ul>
+          </div>
+        </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" id='btn_send_q'>Send</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+

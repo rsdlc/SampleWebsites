@@ -1,0 +1,103 @@
+<!-- Nav bar start -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Kuora</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href='/categories'>Categories</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%= @user.user_name %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/questions/user">Questions</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href='/user/out'>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Nav bar end-->
+<div class="container">
+<% if @question %>
+      <div class="row" id="folowers_q">
+                    <!-- Question User  -->
+                    <div class="col-sm-3" id="userprofile">
+                      <div class="well" align="center">
+                       <p><%= @question.user.name %></p>
+                       <img src="/img/<%= @question.user.img %>" class="img-circle" height="55" width="55" alt="Avatar">
+                      </div>
+                    </div>
+                    <!-- Question @question -->
+                    <div class="col-sm-9">
+                      <div class="well">
+                        <a href="#"><h3><%= @question.title %></h3></a>
+                        <p><%= @question.body %></p>
+                        <a href="/question/like/<%= @question.id %>">
+                          <button type="button" class="btn btn-default btn-sm">
+                          <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                          </button>
+                        </a>
+                        <p id="likes">Likes: <%= @question.likes %></p>
+
+                      </div>
+                      <div class="well" id="respuestas">
+                         <% if @answers %>
+        <% @answers.each do |answer| %>
+            <div class="row" id="folowers_q">
+                    <!-- Question User  -->
+                    <div class="col-sm-2">
+                      <div class="well" style="border:none;">
+                       <p><%= answer.user.name %></p>
+                       <img src="/img/<%= answer.user.img %>" class="img-circle" height="55" width="55" alt="Avatar">
+                      </div>
+                    </div>
+                    <!-- Question answer -->
+                    <div class="col-sm-8">
+                      <div class="well"  style="border:none;">
+                        <a href="#"><h3><%= answer.title %></h3></a>
+                        <p><%= answer.body %></p>
+                        <a href="/answer/like/<%= answer.id %>">
+                          <button type="button" class="btn btn-default btn-sm">
+                              <span class="glyphicon glyphicon-thumbs-up"></span>Like
+                          </button>
+                          <p id="likes">Likes: <%= answer.likes %></p>
+                        </a>
+                      </div>
+                    </div>
+            </div>
+        <% end %>
+      <% end  %>
+                      </div>
+                    </div>
+<form align="center" action="/answers/<%= @question.id %>/new" method="post">
+  <input type="text" name="title" id="answertitle" placeholder="Titulo..." required><br>
+  <textarea placeholder="Escribe tu respuesta aqui..." rows="4" cols="100" name="respuesta" required></textarea>
+  <button type="submit" value="Submit" class="btn btn-success" id="botton">Submit</button>
+  <button type="reset" value="reset" class="btn btn-warning"  id="botton2">Clear</button>
+</form>
+      </div>
+<% end  %>
+</div>
